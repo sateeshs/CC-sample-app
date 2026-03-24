@@ -24,4 +24,22 @@ npx claude-code-templates@latest --agent security-auditor --command security-aud
 npx claude-code-templates@latest
 ```
 
-[dashboard](http://localhost:3333/#dashboard)
+
+[CC dashboard](http://localhost:3333/#dashboard)
+
+[NextJs16-new-7-mistecks](https://32blog.com/en/claude-code/claude-code-nextjs-app-router-mistakes-workflow)
+
+
+#### Pattern 4: Hierarchical for large projects
+
+```
+root/CLAUDE.md              # Project-wide rules (keep minimal)
+src/api/CLAUDE.md           # API layer rules
+src/components/CLAUDE.md    # UI layer rules
+src/lib/CLAUDE.md           # Utility layer rules
+
+```
+
+##### How Claude remembers your project
+
+- [Memory](https://code.claude.com/docs/en/memory)

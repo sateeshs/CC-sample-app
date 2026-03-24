@@ -1,0 +1,31 @@
+# .claudeignore
+
+# Build artifacts (always exclude)
+.next/
+dist/
+out/
+node_modules/
+
+# Large files Claude never needs to read
+*.lock
+pnpm-lock.yaml
+package-lock.json
+
+# Test snapshots (huge token consumers)
+**/__snapshots__/
+**/*.snap
+
+# Secrets
+.env*
+*.pem
+*.key
+
+# Images and binaries
+*.png
+*.jpg
+*.svg
+*.woff2
+
+# Logs
+*.log
+logs/
