@@ -1,12 +1,52 @@
 {
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "mysql",
+    "sequential-thinking",
+    "playwright"
+  ],
+  "permissions": {
+    "allow": [
+      "Edit:*",
+      "Write:*",
+      "MultiEdit:*",
+      "NotebookEdit:*",
+      "Bash:*"
+    ],
+    "defaultMode": "acceptEdits"
+  },
   "hooks": {
-    "PostToolUse": [
+    "UserPromptSubmit": [
       {
-        "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "if command -v osascript >/dev/null 2>&1; then osascript -e 'display notification \"Tool: $CLAUDE_TOOL_NAME completed\" with title \"Claude Code\"'; elif command -v notify-send >/dev/null 2>&1; then notify-send 'Claude Code' \"Tool: $CLAUDE_TOOL_NAME completed\"; fi"
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/skill-activation-prompt.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/post-tool-use-tracker.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/tsc-check.sh"
+          },
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/trigger-build-resolver.sh"
           }
         ]
       }

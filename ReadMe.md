@@ -43,3 +43,10 @@ src/lib/CLAUDE.md           # Utility layer rules
 ##### How Claude remembers your project
 
 - [Memory](https://code.claude.com/docs/en/memory)
+- [workflow-2](https://github.com/CloudAI-X/claude-workflow-v2)
+- [BestPractises](https://github.com/shanraisshan/claude-code-best-practice/)
+
+##### Agent Flow:
+
+##### Sub Agents
+##### Agent Teams
